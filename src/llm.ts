@@ -11,11 +11,11 @@ export const runLLM = async ({
   temperature?: number
   model?: string
 }) => {
-  const response = await openai.chat.completions.create({
+  const response = await openai.chat.completions.create({ // Calling a method on the API
     model,
     messages,
     temperature
   })
 
-  return response.choices[0].message
+  return response.choices[0].message // First message from choice array
 }
