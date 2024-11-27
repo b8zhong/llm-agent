@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "start": "npx tsx index.ts",
-    "test": "jest"
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
+    "test:coverage": "NODE_OPTIONS='--experimental-vm-modules' jest --coverage"
   },
   "devDependencies": {
     "@types/bun": "latest",

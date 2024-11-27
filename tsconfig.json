@@ -1,27 +1,21 @@
 {
   "compilerOptions": {
-    /* Language Features */
-    "lib": ["ESNext"],             // Use the latest ES features
-    "target": "ESNext",            // Compile to modern JS
-    "jsx": "react-jsx",            // For React projects (I'm not using this btw)
-    "module": "CommonJS",          // Use CommonJS for Jest compatibility
-    "moduleResolution": "node",    // Node.js module resolution for Jest
-    "allowJs": true,               // Allow JavaScript files
-    "esModuleInterop": true,       // Enable interop with CommonJS modules (important for Jest)
-    "isolatedModules": true,       // Improves modularity
-    "resolveJsonModule": true,     // Allow importing JSON files
-
-    /* Bundler/Import Options */
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "module": "ESNext",          // Compile to ESM
+    "moduleResolution": "node",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
-    "noEmit": true,                // Prevent emitting files, since bundlers handle this
-
-    /* Type Checking */
-    "skipLibCheck": true,          // Skip type checks for library files
-    "strict": true,                // Enable strict type checking
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src", "tests"],      // Include source and test directories
-  "exclude": ["node_modules"]       // Exclude dependencies
+  "include": ["src", "tests"],
+  "exclude": ["node_modules"]
 }
