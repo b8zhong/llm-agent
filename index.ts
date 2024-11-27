@@ -5,7 +5,7 @@ import {getMessages} from './src/memory'
 const userMessage = process.argv[2]
 
 if (!userMessage) {
-	console.error('Please provide a message')
+	console.error('Please provide a non-empty message.')
 	process.exit(1)
 }
 
