@@ -4,7 +4,7 @@ import type { AIMessage } from '../types'
 export const showLoader = (text: string) => {
   const spinner = ora({
     text,
-    color: 'cyan',
+    color: 'magenta',
   }).start()
 
   return {

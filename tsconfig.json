@@ -3,7 +3,7 @@
     /* Language Features */
     "lib": ["ESNext"],             // Use the latest ES features
     "target": "ESNext",            // Compile to modern JS
-    "jsx": "react-jsx",            // For React projects (remove if not applicable)
+    "jsx": "react-jsx",            // For React projects (I'm not using this btw)
     "module": "CommonJS",          // Use CommonJS for Jest compatibility
     "moduleResolution": "node",    // Node.js module resolution for Jest
     "allowJs": true,               // Allow JavaScript files
