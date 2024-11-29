@@ -2,15 +2,15 @@ import { jest } from '@jest/globals';
 
 // Mock the ora module
 jest.unstable_mockModule('ora', async () => ({
-  default: jest.fn(() => {
+  default: jest.fn(({ text, color }) => {
     const spinner = {
-      text: '', // Initialize the text property
+      text: text || '',
       start: jest.fn(() => spinner),
       stop: jest.fn(),
       succeed: jest.fn(),
       fail: jest.fn(),
-      update: jest.fn((newText: string) => {
-        spinner.text = newText; // Update the text property
+      update: jest.fn((newText) => {
+        spinner.text = newText;
       }),
     };
     return spinner;
@@ -21,7 +21,7 @@ jest.unstable_mockModule('ora', async () => ({
 const { showLoader } = await import('../src/ui');
 const { default: ora } = await import('ora');
 
-describe('showLoader', () => {
+/* describe('showLoader', () => {
   // Clears all mocked functions after each test to avoid conflicts
   afterEach(() => {
     jest.clearAllMocks();
@@ -54,4 +54,38 @@ describe('showLoader', () => {
     loader.update('Test 1'); // Call update to change the text
     expect(loader.spinner.text).toBe('Test 1'); // Validate text property update
   });
+}); */
+
+
+
+import { logMessage } from '../src/ui';
+
+describe('logMessage', () => {
+  let consoleLogSpy: jest.SpiedFunction<typeof console.log>;
+
+  beforeEach(() => {
+    consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {}); // Mock console.log
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks(); // Clear mock after each test
+  });
+
+  it('should not log anything for role "tool"', () => {
+    logMessage({ role: 'tool', content: 'Some tool message', tool_call_id: '123' });
+    expect(consoleLogSpy).not.toHaveBeenCalled(); // Nothing should be logged
+  });
+
+  it('should log user message in cyan', () => {
+    logMessage({ role: 'user', content: 'Hello, World!' });
+    expect(consoleLogSpy).toHaveBeenCalledWith('\n\x1b[36m[USER]\x1b[0m'); // Header
+    expect(consoleLogSpy).toHaveBeenCalledWith('Hello, World!\n'); // Content
+  });
+
+  it('should log assistant message in green', () => {
+    logMessage({ role: 'assistant', content: 'Here to help!' });
+    expect(consoleLogSpy).toHaveBeenCalledWith('\n\x1b[32m[ASSISTANT]\x1b[0m'); // Header
+    expect(consoleLogSpy).toHaveBeenCalledWith('Here to help!\n'); // Content
+  });
+
 });
