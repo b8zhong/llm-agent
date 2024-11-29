@@ -5,6 +5,7 @@
   "scripts": {
     "start": "npx tsx index.ts",
     "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
+    "test:handles": "NODE_OPTIONS='--experimental-vm-modules' jest --detectOpenHandles",
     "test:coverage": "NODE_OPTIONS='--experimental-vm-modules' jest --coverage"
   },
   "devDependencies": {

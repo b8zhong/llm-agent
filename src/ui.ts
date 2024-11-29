@@ -1,19 +1,20 @@
-import ora from 'ora'
-import type { AIMessage } from '../types'
+import ora from 'ora';
+import type { AIMessage } from '../types';
 
 export const showLoader = (text: string) => {
   const spinner = ora({
     text,
     color: 'magenta',
-  }).start()
+  }).start();
 
   return {
+    spinner, // Pass the spinner instance directly here
     stop: () => spinner.stop(),
     succeed: (text?: string) => spinner.succeed(text),
     fail: (text?: string) => spinner.fail(text),
     update: (text: string) => (spinner.text = text),
-  }
-}
+  };
+};
 
 export const logMessage = (message: AIMessage) => {
   const roleColors = {
