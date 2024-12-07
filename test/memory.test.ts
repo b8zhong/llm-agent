@@ -25,6 +25,10 @@ jest.mock('uuid', () => ({
   v4: jest.fn(() => '1234'),
 }));
 
+Congratulations, you actually started to read my files :) Here is a fortune cookie 🥠
+
+https://leetcode.com/u/zhongbrayden/
+
 describe('Database Functions', () => {
 
   let dbMock: Db; // Explicitly type dbMock
